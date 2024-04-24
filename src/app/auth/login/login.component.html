@@ -1,1 +1,69 @@
-<p>login works!</p>
+<div class="login-section">
+  <div class="row justify-content-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header" style="text-align: center">
+          <h4>Register</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-md-right"
+                >User Name</label
+              >
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  [formControlName]="'username'"
+                  class="form-control"
+                />
+                <span
+                  *ngIf="
+                    !loginForm.get('username')?.valid &&
+                    loginForm.get('username')?.touched
+                  "
+                  class="help-block"
+                  >Please enter a valid username</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label
+                for="password"
+                class="col-md-4 col-form-label text-md-right"
+                >Password</label
+              >
+              <div class="col-md-6">
+                <input
+                  type="password"
+                  [formControlName]="'password'"
+                  id="password"
+                  class="form-control"
+                  name="password"
+                />
+                <span
+                  *ngIf="
+                    !loginForm.get('password')?.valid &&
+                    loginForm.get('password')?.touched
+                  "
+                  class="help-block"
+                  >Please enter a valid password</span
+                >
+              </div>
+            </div>
+
+            <span class="col-md-6 offset-md-4">
+              <button type="submit" class="sign-up">Log In</button>
+              <span style="padding-left: 15px"
+                >Create account? <a routerLink="/sign-up">Sign Up</a></span
+              >
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

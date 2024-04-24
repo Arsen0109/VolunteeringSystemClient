@@ -8,6 +8,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {LocalStorageDirective} from "ngx-localstorage";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterLinkActive,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LocalStorageDirective
   ],
   providers: [],
   bootstrap: [AppComponent]
