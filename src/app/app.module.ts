@@ -9,11 +9,16 @@ import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LocalStorageDirective} from "ngx-localstorage";
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular/router';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {TokenInterceptor} from "./token-interceptor";
 import { HomeComponent } from './home/home.component';
+import { PostComponent } from './shared/post/post.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {DatePipe} from "@angular/common";
+import { CreatePostComponent } from './post/create-post/create-post.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -21,25 +26,32 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PostComponent,
+    CreatePostComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     LocalStorageDirective,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }],
+  },
+  DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
