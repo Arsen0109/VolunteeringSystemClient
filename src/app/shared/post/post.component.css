@@ -96,6 +96,10 @@
   margin-top: 15px;
 }
 
+.post-card .read-more-btn:hover {
+  transition-duration: .5s;
+  background-color: #155fad;
+}
 .monobank-button {
   display: block;
   background-color: #ffffff;
