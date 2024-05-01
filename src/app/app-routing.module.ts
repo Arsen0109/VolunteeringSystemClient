@@ -4,12 +4,14 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { LoginComponent } from './auth/login/login.component';
 import {HomeComponent} from "./home/home.component";
+import {CreatePostComponent} from "./post/create-post/create-post.component";
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "sign-up", component: SignupComponent},
-  {path: "login", component: LoginComponent}
+  {path: "login", component: LoginComponent},
+  {path: "create-post", component: CreatePostComponent}
 ];
 
 @NgModule({
