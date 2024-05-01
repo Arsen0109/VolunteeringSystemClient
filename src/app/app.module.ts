@@ -19,6 +19,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {DatePipe} from "@angular/common";
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 
 @NgModule({
   declarations: [
@@ -43,14 +44,16 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     LocalStorageDirective,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    EditorModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   },
-  DatePipe
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
