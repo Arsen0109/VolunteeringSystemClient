@@ -13,7 +13,6 @@ export class CreatePostComponent implements OnInit {
   createPostForm!: FormGroup;
   createPostPayload!: CreatePostPayload
   monoBankJarLinkIsValid = true
-  monoBankErrorText!: string
 
   constructor(private postService: PostService, private router: Router) {
     this.createPostPayload = {

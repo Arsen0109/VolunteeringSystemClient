@@ -20,6 +20,7 @@ import {DatePipe} from "@angular/common";
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
+import { ViewPostComponent } from './post/view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
     HomeComponent,
     PostComponent,
     CreatePostComponent,
-    SidebarComponent
+    SidebarComponent,
+    ViewPostComponent
   ],
   imports: [
     BrowserModule,
