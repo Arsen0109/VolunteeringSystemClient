@@ -4,6 +4,6 @@ export interface PostModel {
   description: string,
   monoBankJarLink: string,
   username: string,
-  isOpened: true,
+  isOpened: boolean,
   createdDate: Date
 }

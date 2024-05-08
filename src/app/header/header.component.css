@@ -36,6 +36,12 @@ header{
     opacity: 1;
 }
 
+.sign-up{
+  background-color: #007bff;
+  border-color: #0079D3;
+  color: aliceblue;
+}
+
 .sign-up:hover, .login:hover{
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     transition-duration: 1s;
@@ -97,5 +103,5 @@ header{
 
 .nav-item-active {
   color: #f8f9fa;
-  background-color: #0079D3;
+  background-color: #007bff;
 }
