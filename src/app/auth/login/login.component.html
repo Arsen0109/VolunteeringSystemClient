@@ -55,7 +55,7 @@
             </div>
 
             <span class="col-md-6 offset-md-4">
-              <button type="submit" class="sign-up">Log In</button>
+              <button type="submit" class="sign-up" [disabled]="loginForm.invalid">Log In</button>
               <span style="padding-left: 15px"
                 >Create account? <a routerLink="/sign-up">Sign Up</a></span
               >

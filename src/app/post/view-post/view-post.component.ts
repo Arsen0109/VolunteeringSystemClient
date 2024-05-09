@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostModel} from "../../shared/post-model";
 import {PostService} from "../../shared/post.service";
 import {ActivatedRoute} from "@angular/router";
@@ -13,7 +13,7 @@ import {CommentService} from "../../shared/comment.service";
   templateUrl: './view-post.component.html',
   styleUrls: ['./view-post.component.css']
 })
-export class ViewPostComponent {
+export class ViewPostComponent implements OnInit{
   postId: number;
   post!: PostModel;
   comments: Array<CommentResponse> = []
@@ -26,6 +26,7 @@ export class ViewPostComponent {
     this.postService.getPostById(this.postId).subscribe(data => {
       this.post = data;
     });
+
     this.createCommentRequestPayload = {
       postId: this.postId,
       text: ''
@@ -36,7 +37,7 @@ export class ViewPostComponent {
 
   ngOnInit(): void {
     this.commentForm = new FormGroup({
-      text: new FormControl('', Validators.required)
+      text: new FormControl(undefined, Validators.required)
     })
   }
 

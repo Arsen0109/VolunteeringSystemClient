@@ -32,3 +32,8 @@ body {
     padding: 3px 16px;
     opacity: 1;
   }
+
+
+button[disabled] {
+  background-color: #878A8C;
+}

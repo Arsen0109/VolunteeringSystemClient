@@ -75,3 +75,7 @@
   width: 288px;
   height: 34px;
 }
+
+button[disabled] {
+  background-color: #878A8C;
+}
