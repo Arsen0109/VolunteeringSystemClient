@@ -25,7 +25,21 @@
       <li class="nav-item"><a routerLink="#" class="nav-link" [routerLinkActive]="'nav-item-active'">About</a></li>
     </ul>
     <div class="flex-grow-1 float-right">
-      <div>
+      <div *ngIf="isLoggedIn" class="dropdown">
+      </div>
+
+      <div class="dropdown mr-2 float-end" *ngIf="isLoggedIn">
+        <button class="userdetails" id="dropdownBasic1">
+          <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+          {{username}}
+        </button>        <div class="dropdown-content">
+          <button class="dropdown-item" (click)="goToUserProfile()" >Profile</button>
+          <button class="dropdown-item" (click)="logout()" >Logout</button>
+        </div>
+      </div>
+
+
+      <div *ngIf="!isLoggedIn">
         <a routerLink="/sign-up" class="float-end sign-up mr-2">Sign up</a>
         <a routerLink="/login" class="float-end login mr-2">Login</a>
       </div>

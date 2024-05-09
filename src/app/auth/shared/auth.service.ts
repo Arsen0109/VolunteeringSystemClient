@@ -44,8 +44,8 @@ export class AuthService {
     return <string>this.localStorageService.get('authenticationToken');
   }
 
-  getUserName() {
-    return this.localStorageService.get('username');
+  getUserName(): string {
+    return <string>this.localStorageService.get('username');
   }
 
   getRefreshToken() {
@@ -54,6 +54,9 @@ export class AuthService {
 
   getExpirationTime() {
     return this.localStorageService.get('expiresAt');
+  }
+  isLoggedIn(): boolean {
+    return this.getAuthToken() != null;
   }
 }
 

@@ -32,7 +32,8 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
     PostComponent,
     CreatePostComponent,
     SidebarComponent,
-    ViewPostComponent
+    ViewPostComponent,
+
   ],
   imports: [
     BrowserModule,
