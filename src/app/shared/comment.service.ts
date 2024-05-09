@@ -18,4 +18,8 @@ export class CommentService {
   getCommentsForPost(postId: number): Observable<Array<CommentResponse>> {
     return this.httpClient.get<Array<CommentResponse>>(`http://localhost:8080/api/comment/by-post/${postId}`)
   }
+
+  getCommentsByUser(username: string): Observable<Array<CommentResponse>> {
+    return this.httpClient.get<Array<CommentResponse>>(`http://localhost:8080/api/comment/by-user/${username}`)
+  }
 }

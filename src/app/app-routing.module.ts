@@ -6,14 +6,17 @@ import { LoginComponent } from './auth/login/login.component';
 import {HomeComponent} from "./home/home.component";
 import {CreatePostComponent} from "./post/create-post/create-post.component";
 import {ViewPostComponent} from "./post/view-post/view-post.component";
+import {UserProfileComponent} from "./auth/user-profile/user-profile.component";
+import {authGuard} from "./auth/auth.guard";
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "sign-up", component: SignupComponent},
   {path: "login", component: LoginComponent},
-  {path: "create-post", component: CreatePostComponent},
-  {path: "view-post/:id", component: ViewPostComponent}
+  {path: "create-post", component: CreatePostComponent, canActivate: [authGuard]},
+  {path: "view-post/:id", component: ViewPostComponent, canActivate: [authGuard]},
+  {path: "view-profile/:username", component: UserProfileComponent, canActivate: [authGuard]}
 ];
 
 @NgModule({

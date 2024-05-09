@@ -27,6 +27,10 @@ export class PostService {
     return this.httpClient.get<PostModel>("http://localhost:8080/api/post/" + postId)
   }
 
+  getPostsByUserName(username: string): Observable<Array<PostModel>> {
+    return this.httpClient.get<Array<PostModel>>(`http://localhost:8080/api/post/by-user/${username}`)
+  }
+
   monoBankJarLinkIsValid(monoBankJarLink: string): boolean {
 
     const monoBankApiUrl = "https://send.monobank.ua/api/handler"

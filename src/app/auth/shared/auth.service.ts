@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { SignupRequestPayload } from '../signup/signupRequest';
 import {Observable, map, tap} from 'rxjs';
@@ -10,6 +10,13 @@ import {LocalStorageService} from "ngx-localstorage";
   providedIn: 'root'
 })
 export class AuthService {
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() username: EventEmitter<string> = new EventEmitter();
+
+  refreshTokenPayload = {
+    refreshToken: this.getRefreshToken(),
+    username: this.getUserName()
+  }
   constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) { }
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any>{
@@ -24,17 +31,16 @@ export class AuthService {
       this.localStorageService.set("refreshToken", data.refreshToken);
       this.localStorageService.set("expiresAt", data.expiresAt)
 
+      this.loggedIn.emit(true)
+      this.username.emit(data.username)
       return true
     }))
   }
 
   refreshToken() {
-    const refreshTokenPayload = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUserName()
-    }
+
     return this.httpClient.post<LoginResponsePayload>('http://localhost:8080/api/auth/refresh/token',
-      refreshTokenPayload)
+      this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorageService.set('authenticationToken', response.authToken);
         this.localStorageService.set('expiresAt', response.expiresAt);
@@ -44,6 +50,14 @@ export class AuthService {
     return <string>this.localStorageService.get('authenticationToken');
   }
 
+  logout() {
+    this.httpClient.post<string>('http://localhost:8080/api/auth/logout', this.refreshTokenPayload).subscribe(
+      data => {
+        console.log(data)
+      }
+    )
+    this.localStorageService.clear();
+  }
   getUserName(): string {
     return <string>this.localStorageService.get('username');
   }

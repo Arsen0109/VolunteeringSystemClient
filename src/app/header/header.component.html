@@ -30,9 +30,10 @@
 
       <div class="dropdown mr-2 float-end" *ngIf="isLoggedIn">
         <button class="userdetails" id="dropdownBasic1">
-          <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+          <img class="account-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/2000px-Flag_of_Ukraine.svg.png">
           {{username}}
-        </button>        <div class="dropdown-content">
+        </button>
+        <div class="dropdown-content">
           <button class="dropdown-item" (click)="goToUserProfile()" >Profile</button>
           <button class="dropdown-item" (click)="logout()" >Logout</button>
         </div>
