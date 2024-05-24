@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {PostModel} from "./post-model";
+import {ParsedPostModel, PostModel} from "./post-model";
 import {CreatePostPayload} from "./create-post-payload";
 // @ts-ignore
 import parseUrl from "parse-url"
 import {catchError} from "rxjs/operators";
 import {PostComponent} from "./post/post.component";
+
+export interface MonoBankJarProperties {
+  isOpened: boolean,
+  hasJarGoal: boolean,
+  jarProgress: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +38,10 @@ export class PostService {
     return this.httpClient.get<Array<PostModel>>(`http://localhost:8080/api/post/by-user/${username}`)
   }
 
+  getAllParsedPosts(): Observable<Array<ParsedPostModel>> {
+    return this.httpClient.get<Array<ParsedPostModel>>("http://localhost:8080/api/parsed-post")
+  }
+
   monoBankJarLinkIsValid(monoBankJarLink: string): boolean {
 
     const monoBankApiUrl = "https://send.monobank.ua/api/handler"
@@ -51,5 +62,26 @@ export class PostService {
       isError = true
     }
     return !isError
+  }
+
+  getMonoBankJarProps(monoBankJarLink: string): Observable<any> {
+    const monoBankApiUrl = "https://send.monobank.ua/api/handler"
+
+    const parsedUrl = parseUrl(monoBankJarLink)
+    if (parsedUrl.resource !== "send.monobank.ua") { throw new Error("")}
+    const clientId = parsedUrl.pathname.split("/")[1]
+    return this.httpClient.post(monoBankApiUrl,
+      {
+        "c": "hello",
+        "clientId": clientId,
+        "Pc": "BBXHINsKar3hFQFbphcyCkpq+qDMPJ5NNgOISwwGKOX2gM+Usx2Pjo5dNKgHdar8L/mjMPE9bvSBqePlHEeVdBc="
+      }, {headers: {"Content-Type": "application/json", "Accept": "application/json"}, observe: "response"})
+
+      // // @ts-ignore
+      // monoBankJarProps.hasJarGoal = (data["jarGoal"] !== undefined)
+      // // @ts-ignore
+      // monoBankJarProps.isOpened = (data["jarStatus"] === "ACTIVE")
+      // // @ts-ignore
+      // monoBankJarProps.jarProgress = monoBankJarProps ? data["jarAmount"] / data["jarGoal"] : 0
   }
 }

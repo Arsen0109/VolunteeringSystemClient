@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {PostModel} from "../../shared/post-model";
-import {PostService} from "../../shared/post.service";
+import {MonoBankJarProperties, PostService} from "../../shared/post.service";
 import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {CommentResponse} from "./CommentResponse";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CommentRequest} from "./commentRequest";
 import {CommentService} from "../../shared/comment.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-view-post',
@@ -19,6 +20,7 @@ export class ViewPostComponent implements OnInit{
   comments: Array<CommentResponse> = []
   commentForm!: FormGroup
   createCommentRequestPayload: CommentRequest
+
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute, public datePipe: DatePipe,
               private commentService: CommentService) {
@@ -48,5 +50,13 @@ export class ViewPostComponent implements OnInit{
         this.commentService.getCommentsForPost(this.postId).subscribe(data => this.comments = data)
       }
     )
+  }
+  getMonoBankJarProperties(monoBankJarLink: string): string {
+    // const monoBankJarProps: Observable<any> = this.postService.getMonoBankJarProps(monoBankJarLink)
+    // monoBankJarProps.subscribe(data => console.log(data))
+    // if (!monoBankJarProps.hasJarGoal || !monoBankJarProps.isOpened) {
+    //   return `width: ${monoBankJarProps.jarProgress}%`
+    // }
+    return "display: none"
   }
 }

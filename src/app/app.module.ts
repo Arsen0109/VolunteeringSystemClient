@@ -22,6 +22,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import {ProgressBarModule} from "angular-progress-bar";
+import { ParsedPostComponent } from './shared/parsed-post/parsed-post.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     SidebarComponent,
     ViewPostComponent,
     UserProfileComponent,
+    ParsedPostComponent,
 
   ],
   imports: [

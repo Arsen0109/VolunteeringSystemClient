@@ -1,0 +1,18 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<div class="row post" *ngFor="let post of parsedPosts">
+  <div class="post-card">
+    <div class="d-flex flex-row">
+      <div class="blog-content">
+        <h2 class="blog-title">{{post.postName}}</h2>
+        <p class="blog-author">{{post.platformName}}</p>
+        <p class="blog-description" [innerHtml]="post.description">{{post.description}}</p>
+        <a href="{{post.url}}" class="read-more-btn">Read More</a>
+      </div>
+      <div style="padding: 10px">
+        <img src="{{post.iconUrl}}">
+      </div>
+    </div>
+  </div>
+</div>

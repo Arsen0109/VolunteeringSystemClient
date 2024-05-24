@@ -9,6 +9,14 @@
           <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
                  placeholder="Title">
 
+          <input type="text" [formControlName]="'cardNumber'" class="form-control" style="margin-top: 5px"
+                 placeholder="Card Number">
+          <span
+            *ngIf="!this.cardNumberIsValid"
+            class="help-block" style="color: red"
+          >Please enter a valid card number with length 16 containing only numbers.</span
+          >
+
           <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Monobank Jar Link">
           <span
             *ngIf="!this.monoBankJarLinkIsValid"

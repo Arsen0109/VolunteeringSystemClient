@@ -13,11 +13,12 @@ export class CreatePostComponent implements OnInit {
   createPostForm!: FormGroup;
   createPostPayload!: CreatePostPayload
   monoBankJarLinkIsValid = true
-
+  cardNumberIsValid = true
   constructor(private postService: PostService, private router: Router) {
     this.createPostPayload = {
       postName: '',
       description: '',
+      cardNumber: '',
       isOpened: true,
     }
   }
@@ -26,6 +27,7 @@ export class CreatePostComponent implements OnInit {
     this.createPostForm = new FormGroup({
       postName: new FormControl('', Validators.required),
       monoBankJarLink: new FormControl(undefined),
+      cardNumber: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
     });
   }
@@ -33,7 +35,7 @@ export class CreatePostComponent implements OnInit {
   createPost(){
     this.createPostPayload.postName = this.createPostForm.get('postName')?.value;
     this.createPostPayload.description = this.createPostForm.get('description')?.value;
-    // this.createPostPayload.monoBankJarLink = this.createPostForm.get('monoBankJarLink')?.value;
+    this.createPostPayload.cardNumber = this.createPostForm.get('cardNumber')?.value;
 
     // Check if monobank jar link exists and is valid. If not set an error.
 
@@ -43,7 +45,10 @@ export class CreatePostComponent implements OnInit {
         this.postService.monoBankJarLinkIsValid(formMonoJarLink)
       this.createPostPayload.monoBankJarLink = formMonoJarLink
     }
-    if (this.monoBankJarLinkIsValid) {
+
+    // Check if card number is valid
+    this.cardNumberIsValid = this.validateCardNumber(this.createPostPayload.cardNumber)
+    if (this.monoBankJarLinkIsValid && this.cardNumberIsValid) {
       try {
         this.postService.createPost(this.createPostPayload).subscribe(data => {
           this.router.navigateByUrl("/")
@@ -57,5 +62,10 @@ export class CreatePostComponent implements OnInit {
   }
   discardPost(){
     this.router.navigateByUrl("/")
+  }
+  validateCardNumber(cardNumber: string): boolean{
+    const trimmedCardNumber: string = cardNumber.replaceAll(" ", "")
+    console.log(trimmedCardNumber)
+    return (!isNaN(Number(trimmedCardNumber))) && trimmedCardNumber.length == 16
   }
 }

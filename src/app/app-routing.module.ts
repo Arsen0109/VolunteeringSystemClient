@@ -8,12 +8,14 @@ import {CreatePostComponent} from "./post/create-post/create-post.component";
 import {ViewPostComponent} from "./post/view-post/view-post.component";
 import {UserProfileComponent} from "./auth/user-profile/user-profile.component";
 import {authGuard} from "./auth/auth.guard";
+import {ParsedPostComponent} from "./shared/parsed-post/parsed-post.component";
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "sign-up", component: SignupComponent},
   {path: "login", component: LoginComponent},
+  {path: "parsed-post", component: ParsedPostComponent},
   {path: "create-post", component: CreatePostComponent, canActivate: [authGuard]},
   {path: "view-post/:id", component: ViewPostComponent, canActivate: [authGuard]},
   {path: "view-profile/:username", component: UserProfileComponent, canActivate: [authGuard]}
