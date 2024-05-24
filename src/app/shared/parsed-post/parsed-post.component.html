@@ -4,13 +4,13 @@
 <div class="row post" *ngFor="let post of parsedPosts">
   <div class="post-card">
     <div class="d-flex flex-row">
-      <div class="blog-content">
+      <div class="blog-content" style="width: 100%">
         <h2 class="blog-title">{{post.postName}}</h2>
         <p class="blog-author">{{post.platformName}}</p>
         <p class="blog-description" [innerHtml]="post.description">{{post.description}}</p>
         <a href="{{post.url}}" class="read-more-btn">Read More</a>
       </div>
-      <div style="padding: 10px">
+      <div style="padding: 10px" class="justify-content-end">
         <img src="{{post.iconUrl}}">
       </div>
     </div>
