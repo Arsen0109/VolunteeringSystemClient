@@ -24,6 +24,7 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import {ProgressBarModule} from "angular-progress-bar";
 import { ParsedPostComponent } from './shared/parsed-post/parsed-post.component';
+import { CopyToClipboardComponent } from './copy-to-clipboard/copy-to-clipboard.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ParsedPostComponent } from './shared/parsed-post/parsed-post.component'
     ViewPostComponent,
     UserProfileComponent,
     ParsedPostComponent,
+    CopyToClipboardComponent,
 
   ],
   imports: [

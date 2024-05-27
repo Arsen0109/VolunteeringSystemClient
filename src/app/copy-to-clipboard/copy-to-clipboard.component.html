@@ -1,0 +1,5 @@
+<div class="copy-container">
+  <input type="text" value="{{this.textToCopy}}" readonly>
+  <button (click)="copyText()">Copy card number to Clipboard</button>
+</div>
+<p *ngIf="copySuccess" class="success-message">Card number copied to clipboard!</p>

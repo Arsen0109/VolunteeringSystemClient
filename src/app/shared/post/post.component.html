@@ -7,6 +7,7 @@
       <h2 class="blog-title">{{post.postName}}</h2>
       <p class="blog-author">Created by <a href="#">{{post.username}}</a></p>
       <p class="blog-author">Created at: {{datePipe.transform(post.createdDate, "dd/MM/yyyy")}}</p>
+      <app-copy-to-clipboard [textToCopy]="post.cardNumber"></app-copy-to-clipboard>
       <p class="blog-author">{{post.cardNumber}}</p>
       <p class="blog-description" [innerHtml]="post.description">{{post.description}}</p>
       <a routerLink="{{this.getPostUrl(post.postId)}}" class="read-more-btn">Read More</a>
