@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginRequestPayload } from './loginRequest';
+import { LoginRequestPayload } from '../../DTO/loginRequest';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import {ActivatedRoute, Router} from "@angular/router";

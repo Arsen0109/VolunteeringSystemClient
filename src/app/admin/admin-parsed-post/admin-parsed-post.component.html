@@ -2,7 +2,7 @@
   <div class="row">
     <hr />
     <div class="create-post-container col-md-9">
-      <form class="post-form" [formGroup]="updatePostForm">
+      <form class="post-form" [formGroup]="updateParsedPostForm">
         <div class="form-group">
           <div class="create-post-heading">Create Post</div>
           <hr />
@@ -11,20 +11,11 @@
           <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
                  placeholder="Title">
 
-          <input type="text" [formControlName]="'cardNumber'" class="form-control" style="margin-top: 5px"
-                 placeholder="Card Number">
-          <span
-            *ngIf="!this.cardNumberIsValid"
-            class="help-block" style="color: red"
-          >Please enter a valid card number with length 16 containing only numbers.</span
-          >
+          <input type="text" [formControlName]="'url'" class="form-control" style="margin-top: 5px"
+                 placeholder="Post URL">
 
-          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Monobank Jar Link">
-          <span
-            *ngIf="!this.monoBankJarLinkIsValid"
-            class="help-block" style="color: red"
-          >Please enter a valid monobank jar link</span
-          >
+          <input type="text" class="form-control" [formControlName]="'platformName'" style="margin-top: 5px" placeholder="Platform Name">
+          <input type="text" class="form-control" [formControlName]="'iconUrl'" style="margin-top: 5px" placeholder="Icon URL">
 
           <editor [formControlName]="'description'" [init]="{
             base_url: '/tinymce',
@@ -33,9 +24,9 @@
           <span>
             <div style="margin-top: 5px" class="float-right">
               <button (click)="deletePost()" class="btnDiscard">Delete</button>
-              <button (click)="getPost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
+              <button (click)="getPost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
 
-              <button (click)="updatePost()" [disabled]="updatePostForm.invalid"
+              <button (click)="updatePost()" [disabled]="updateParsedPostForm.invalid"
                       class="btnUpdatePost">Update</button>
             </div>
           </span>

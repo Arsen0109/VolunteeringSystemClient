@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {PostModel} from "../../shared/post-model";
+import {PostModel} from "../../DTO/post-model";
 import {MonoBankJarProperties, PostService} from "../../shared/post.service";
 import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
-import {CommentResponse} from "./CommentResponse";
+import {CommentResponse} from "../../DTO/commentResponse";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CommentRequest} from "./commentRequest";
+import {CommentRequest} from "../../DTO/commentRequest";
 import {CommentService} from "../../shared/comment.service";
 import {Observable} from "rxjs";
 

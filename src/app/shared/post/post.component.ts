@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PostModel} from "../post-model";
+import {PostModel} from "../../DTO/post-model";
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";

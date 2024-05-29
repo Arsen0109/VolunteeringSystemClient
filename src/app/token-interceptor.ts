@@ -3,7 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import {Observable, throwError, BehaviorSubject, filter, take, EMPTY} from 'rxjs';
 import { AuthService } from './auth/shared/auth.service';
 import { catchError, switchMap } from 'rxjs/operators';
-import { LoginResponsePayload } from "./auth/login/loginResponse";
+import { LoginResponsePayload } from "./DTO/loginResponse";
 
 @Injectable({
   providedIn: 'root'

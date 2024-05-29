@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PostModel} from "../../shared/post-model";
-import {CommentResponse} from "../../post/view-post/CommentResponse";
+import {PostModel} from "../../DTO/post-model";
+import {CommentResponse} from "../../DTO/commentResponse";
 import {DatePipe} from "@angular/common";
 import {AuthService} from "../shared/auth.service";
 import {PostService} from "../../shared/post.service";

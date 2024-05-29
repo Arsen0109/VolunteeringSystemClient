@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {PostService} from "../post.service";
-import {ParsedPostModel} from "../post-model";
+import {ParsedPostModel} from "../../DTO/post-model";
 
 @Component({
   selector: 'app-parsed-post',

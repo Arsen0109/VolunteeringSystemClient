@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ParsedPostModel, PostModel} from "./post-model";
-import {PostRequestPayload} from "./post-request-payload";
+import {ParsedPostModel, PostModel} from "../DTO/post-model";
+import {PostRequestPayload} from "../DTO/post-request-payload";
 // @ts-ignore
 import parseUrl from "parse-url"
 import {catchError} from "rxjs/operators";

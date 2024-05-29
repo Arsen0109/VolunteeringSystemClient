@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {PostRequestPayload} from "../../shared/post-request-payload";
+import {PostRequestPayload} from "../../DTO/post-request-payload";
 import {PostService} from "../../shared/post.service";
 import {Router} from "@angular/router";
 import {AdminService} from "../admin.service";
@@ -18,7 +18,7 @@ export class UserPostComponent implements OnInit {
   postIsUpdated = false
   postIsDeleted = false
 
-  constructor(private postService: PostService, private adminService: AdminService, private router: Router) {
+  constructor(private postService: PostService, private router: Router) {
     this.updatePostPayload = {
       postName: '',
       description: '',
@@ -43,12 +43,11 @@ export class UserPostComponent implements OnInit {
     this.updatePostPayload.description = this.updatePostForm.get('description')?.value;
     this.updatePostPayload.cardNumber = this.updatePostForm.get('cardNumber')?.value;
 
-    // Check if monobank jar link exists and is valid. If not set an error.
+      // Check if monobank jar link exists and is valid. If not set an error.
 
     const formMonoJarLink = this.updatePostForm.get('monoBankJarLink')?.value
     if (formMonoJarLink != undefined) {
-      this.monoBankJarLinkIsValid =
-        this.postService.monoBankJarLinkIsValid(formMonoJarLink)
+      this.monoBankJarLinkIsValid = this.postService.monoBankJarLinkIsValid(formMonoJarLink)
       this.updatePostPayload.monoBankJarLink = formMonoJarLink
     }
 
@@ -57,12 +56,11 @@ export class UserPostComponent implements OnInit {
     if (this.monoBankJarLinkIsValid && this.cardNumberIsValid) {
       try {
         this.postService.updatePost(postId, this.updatePostPayload).subscribe(data => {
-          // Set form fields to updated post params
-          this.updatePostForm.get("postName")?.setValue(data.postName)
-          this.updatePostForm.get("description")?.setValue(data.description)
-          this.updatePostForm.get("cardNumber")?.setValue(data.cardNumber)
-          this.updatePostForm.get("monoBankJarLink")?.setValue(data.monoBankJarLink)
-
+          this.clearForm()
+          this.postIsUpdated = true;
+          setTimeout(() => {
+            this.postIsUpdated = false
+          }, 2000)
         })
       } catch (e) {
         throw Error("Error occurred while updating post")
@@ -81,6 +79,10 @@ export class UserPostComponent implements OnInit {
   deletePost(){
     this.postService.deletePostById(this.updatePostForm.get("postId")?.value).subscribe(data => {
       this.clearForm()
+      this.postIsDeleted = true;
+      setTimeout(() => {
+        this.postIsDeleted = false
+      }, 2000)
     })
   }
   getPost() {

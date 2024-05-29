@@ -27,7 +27,8 @@ import { ParsedPostComponent } from './shared/parsed-post/parsed-post.component'
 import { CopyToClipboardComponent } from './copy-to-clipboard/copy-to-clipboard.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { UserPostComponent } from './admin/user-post/user-post.component';
-import { CommentComponent } from './admin/comment/comment.component';
+import { AdminCommentComponent } from './admin/admin-comment/admin-comment.component';
+import {AdminParsedPostComponent} from "./admin/admin-parsed-post/admin-parsed-post.component";
 
 @NgModule({
   declarations: [
@@ -43,9 +44,11 @@ import { CommentComponent } from './admin/comment/comment.component';
     UserProfileComponent,
     ParsedPostComponent,
     CopyToClipboardComponent,
+    AdminParsedPostComponent,
+    AdminCommentComponent,
     AdminComponent,
     UserPostComponent,
-    CommentComponent,
+    AdminCommentComponent,
 
   ],
   imports: [

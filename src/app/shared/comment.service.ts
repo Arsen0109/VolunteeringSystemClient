@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CommentRequest} from "../post/view-post/commentRequest";
+import {CommentRequest} from "../DTO/commentRequest";
 import {Observable} from "rxjs";
-import {CommentResponse} from "../post/view-post/CommentResponse";
+import {CommentResponse} from "../DTO/commentResponse";
 
 @Injectable({
   providedIn: 'root'
