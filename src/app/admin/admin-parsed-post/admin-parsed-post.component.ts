@@ -61,8 +61,9 @@ export class AdminParsedPostComponent implements OnInit {
     this.updateParsedPostForm.get("postId")?.reset()
     this.updateParsedPostForm.get("postName")?.reset()
     this.updateParsedPostForm.get("description")?.reset()
-    this.updateParsedPostForm.get("cardNumber")?.reset()
-    this.updateParsedPostForm.get("monoBankJarLink")?.reset()
+    this.updateParsedPostForm.get("url")?.reset()
+    this.updateParsedPostForm.get("platformName")?.reset()
+    this.updateParsedPostForm.get("iconUrl")?.reset()
   }
   deletePost(){
     this.adminService.deleteParsedPost(this.updateParsedPostForm.get("postId")?.value).subscribe(data => {

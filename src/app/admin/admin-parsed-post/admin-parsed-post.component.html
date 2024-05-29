@@ -23,11 +23,11 @@
           </editor>
           <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="deletePost()" class="btnDiscard">Delete</button>
               <button (click)="getPost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
 
               <button (click)="updatePost()" [disabled]="updateParsedPostForm.invalid"
                       class="btnUpdatePost">Update</button>
+              <button (click)="deletePost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnDelete">Delete</button>
             </div>
           </span>
           <span

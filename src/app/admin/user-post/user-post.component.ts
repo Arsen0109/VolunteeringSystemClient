@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostRequestPayload} from "../../DTO/post-request-payload";
 import {PostService} from "../../shared/post.service";
-import {Router} from "@angular/router";
-import {AdminService} from "../admin.service";
+import {AuthService} from "../../auth/shared/auth.service";
 
 @Component({
   selector: 'app-user-post',
@@ -13,12 +12,13 @@ import {AdminService} from "../admin.service";
 export class UserPostComponent implements OnInit {
   updatePostForm!: FormGroup;
   updatePostPayload!: PostRequestPayload
+  userIsAdmin!: boolean
   monoBankJarLinkIsValid = true
   cardNumberIsValid = true
   postIsUpdated = false
   postIsDeleted = false
 
-  constructor(private postService: PostService, private router: Router) {
+  constructor(private postService: PostService, private authService: AuthService) {
     this.updatePostPayload = {
       postName: '',
       description: '',
@@ -28,12 +28,16 @@ export class UserPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userIsAdmin = JSON.parse(this.authService.getAdmin());
     this.updatePostForm = new FormGroup({
       postId: new FormControl('', Validators.required),
       postName: new FormControl('', Validators.required),
       monoBankJarLink: new FormControl(undefined),
       cardNumber: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
+      username: new FormControl(''),
+      isOpened: new FormControl(''),
+      date: new FormControl(''),
     });
   }
 
@@ -75,6 +79,9 @@ export class UserPostComponent implements OnInit {
     this.updatePostForm.get("description")?.reset()
     this.updatePostForm.get("cardNumber")?.reset()
     this.updatePostForm.get("monoBankJarLink")?.reset()
+    this.updatePostForm.get("username")?.reset()
+    this.updatePostForm.get("isOpened")?.reset()
+    this.updatePostForm.get("date")?.reset()
   }
   deletePost(){
     this.postService.deletePostById(this.updatePostForm.get("postId")?.value).subscribe(data => {
@@ -91,6 +98,9 @@ export class UserPostComponent implements OnInit {
       this.updatePostForm.get("description")?.setValue(data.description)
       this.updatePostForm.get("cardNumber")?.setValue(data.cardNumber)
       this.updatePostForm.get("monoBankJarLink")?.setValue(data.monoBankJarLink)
+      this.updatePostForm.get("username")?.setValue(data.username)
+      this.updatePostForm.get("isOpened")?.setValue(data.isOpened ? "Fundraise is Opened": "Fundraise is closed")
+      this.updatePostForm.get("date")?.setValue(data.createdDate.toLocaleString())
     })
   }
   validateCardNumber(cardNumber: string): boolean{

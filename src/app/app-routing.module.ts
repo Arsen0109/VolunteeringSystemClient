@@ -10,6 +10,8 @@ import {UserProfileComponent} from "./auth/user-profile/user-profile.component";
 import {authGuard} from "./auth/auth.guard";
 import {ParsedPostComponent} from "./shared/parsed-post/parsed-post.component";
 import {AdminComponent} from "./admin/admin/admin.component";
+import {UserPostComponent} from "./admin/user-post/user-post.component";
+import {AdminCommentComponent} from "./admin/admin-comment/admin-comment.component";
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path: "parsed-post", component: ParsedPostComponent},
   {path: "create-post", component: CreatePostComponent, canActivate: [authGuard]},
   {path: "admin", component: AdminComponent},
+  {path: "admin/user-post", component: UserPostComponent},
+  {path: "admin/user-comment", component: AdminCommentComponent},
   {path: "view-post/:id", component: ViewPostComponent, canActivate: [authGuard]},
   {path: "view-profile/:username", component: UserProfileComponent, canActivate: [authGuard]}
 ];

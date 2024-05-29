@@ -22,4 +22,16 @@ export class CommentService {
   getCommentsByUser(username: string): Observable<Array<CommentResponse>> {
     return this.httpClient.get<Array<CommentResponse>>(`http://localhost:8080/api/comment/by-user/${username}`)
   }
+
+  getCommentById(commentId: number): Observable<CommentResponse> {
+    return this.httpClient.get<CommentResponse>(`http://localhost:8080/api/comment/${commentId}`)
+  }
+
+  updateComment(commentId: number, updateCommentRequest: CommentRequest): Observable<CommentResponse> {
+    return this.httpClient.put<CommentResponse>(`http://localhost:8080/api/comment/${commentId}`, updateCommentRequest)
+  }
+
+  deleteComment(commentId: number): Observable<CommentResponse> {
+    return this.httpClient.delete<CommentResponse>(`http://localhost:8080/api/comment/${commentId}`)
+  }
 }

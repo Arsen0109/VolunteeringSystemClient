@@ -1,1 +1,50 @@
-<p>admin-comment works!</p>
+<div class="container" *ngIf="this.userIsAdmin;else otherContent">
+  <div class="row">
+    <hr />
+    <div class="comment-container col-md-9">
+      <div>
+        <form class="post-form" [formGroup]="updateCommentForm">
+          <div class="form-group">
+            <div class="comment-heading">Admin operations over user comments</div>
+            <hr />
+            <input type="text" [formControlName]="'commentId'" class="form-control" style="margin-top: 5px"
+                   placeholder="Comment ID">
+            <input type="text" [formControlName]="'text'" class="form-control" style="margin-top: 5px"
+                   placeholder="Comment Text">
+
+            <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
+                   placeholder="Post ID" readonly>
+            <input type="text" [formControlName]="'username'" class="form-control" style="margin-top: 5px"
+                   placeholder="User Name" readonly>
+            <input type="text" [formControlName]="'createdDate'" class="form-control" style="margin-top: 5px"
+                   placeholder="Date of creation" readonly>
+            <span>
+            <div style="margin-top: 5px" class="float-right">
+              <button (click)="getComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnUpdateComments">Get Comment</button>
+
+              <button (click)="updateComment()" [disabled]="updateCommentForm.invalid"
+                      class="btnUpdateComments">Update</button>
+              <button (click)="deleteComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnDelete">Delete</button>
+            </div>
+          </span>
+            <span
+              *ngIf="this.commentIsDeleted"
+              class="help-block" style="color: green"
+            >Post deleted successfully</span>
+            <span
+              *ngIf="this.commentIsUpdated"
+              class="help-block" style="color: green"
+            >Post updated successfully</span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-admin-sidebar></app-admin-sidebar>
+    </div>
+  </div>
+</div>
+<ng-template #otherContent>
+  <br>
+  Sorry you are not admin
+</ng-template>

@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="this.userIsAdmin;else otherContent">
   <div class="row">
     <hr />
     <div class="create-post-container col-md-9">
-      <form class="post-form" [formGroup]="updatePostForm">
+      <div>
+        <form class="post-form" [formGroup]="updatePostForm">
         <div class="form-group">
-          <div class="create-post-heading">Create Post</div>
+          <div class="create-post-heading">Admin operations over users posts</div>
           <hr />
           <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
                  placeholder="Post ID">
@@ -25,6 +26,9 @@
             class="help-block" style="color: red"
           >Please enter a valid monobank jar link</span
           >
+          <input type="text" class="form-control" [formControlName]="'username'" style="margin-top: 5px" placeholder="User Name" readonly>
+          <input type="text" class="form-control" [formControlName]="'isOpened'" style="margin-top: 5px" placeholder="Is Opened" readonly>
+          <input type="text" class="form-control" [formControlName]="'date'" style="margin-top: 5px" placeholder="Date of creation" readonly>
 
           <editor [formControlName]="'description'" [init]="{
             base_url: '/tinymce',
@@ -32,11 +36,12 @@
           </editor>
           <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="deletePost()" class="btnDiscard">Delete</button>
               <button (click)="getPost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
 
               <button (click)="updatePost()" [disabled]="updatePostForm.invalid"
                       class="btnUpdatePost">Update</button>
+              <button (click)="deletePost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnDelete">Delete</button>
+
             </div>
           </span>
           <span
@@ -50,6 +55,13 @@
         </div>
       </form>
     </div>
-
+    </div>
+    <div class="col-md-3">
+      <app-admin-sidebar></app-admin-sidebar>
+    </div>
   </div>
 </div>
+<ng-template #otherContent>
+  <br>
+  Sorry you are not admin
+</ng-template>

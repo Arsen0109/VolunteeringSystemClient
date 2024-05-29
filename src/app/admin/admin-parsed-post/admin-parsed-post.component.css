@@ -24,12 +24,10 @@
   padding: 5px;
 }
 
-.btnDiscard {
-  fill: #0079D3;
+.btnDelete {
   border: 1px solid;
   border-radius: 4px;
   text-align: center;
-  letter-spacing: 1px;
   text-decoration: none;
   font-size: 12px;
   font-weight: 700;
@@ -41,8 +39,12 @@
   width: 288px;
   height: 34px;
   margin-top: 5px;
-  color: #0079D3;
-  background-color: transparent;
+  color: white;
+  background-color: red;
+}
+
+.btnDelete:hover {
+  background-color: #c20000;
 }
 
 .create-post-heading {
