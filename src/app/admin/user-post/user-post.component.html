@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <hr />
+    <div class="create-post-container col-md-9">
+      <form class="post-form" [formGroup]="updatePostForm">
+        <div class="form-group">
+          <div class="create-post-heading">Create Post</div>
+          <hr />
+          <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
+                 placeholder="Post ID">
+          <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
+                 placeholder="Title">
+
+          <input type="text" [formControlName]="'cardNumber'" class="form-control" style="margin-top: 5px"
+                 placeholder="Card Number">
+          <span
+            *ngIf="!this.cardNumberIsValid"
+            class="help-block" style="color: red"
+          >Please enter a valid card number with length 16 containing only numbers.</span
+          >
+
+          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Monobank Jar Link">
+          <span
+            *ngIf="!this.monoBankJarLinkIsValid"
+            class="help-block" style="color: red"
+          >Please enter a valid monobank jar link</span
+          >
+
+          <editor [formControlName]="'description'" [init]="{
+            base_url: '/tinymce',
+            suffix: '.min'}">
+          </editor>
+          <span>
+            <div style="margin-top: 5px" class="float-right">
+              <button (click)="deletePost()" class="btnDiscard">Delete</button>
+              <button (click)="getPost()" class="btnDiscard">Get Post</button>
+
+              <button (click)="updatePost()" [disabled]="updatePostForm.invalid"
+                      class="btnUpdatePost">Update</button>
+            </div>
+          </span>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

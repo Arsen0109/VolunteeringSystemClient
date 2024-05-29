@@ -1,0 +1,12 @@
+<div *ngIf="this.userIsAdmin;else otherContent">
+<app-user-post></app-user-post>
+</div>
+
+<ng-template #otherContent>
+  <p>admin works!</p>
+  <p>admin works!</p>
+  <p>admin works!</p>
+  <p>admin works!</p>
+  <p>admin works!</p>
+  Sorry you are not admin
+</ng-template>

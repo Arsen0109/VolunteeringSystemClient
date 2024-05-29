@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostService} from "../../shared/post.service";
-import {CreatePostPayload} from "../../shared/create-post-payload";
+import {PostRequestPayload} from "../../shared/post-request-payload";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class CreatePostComponent implements OnInit {
   createPostForm!: FormGroup;
-  createPostPayload!: CreatePostPayload
+  createPostPayload!: PostRequestPayload
   monoBankJarLinkIsValid = true
   cardNumberIsValid = true
   constructor(private postService: PostService, private router: Router) {

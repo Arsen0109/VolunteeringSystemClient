@@ -25,6 +25,9 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
 import {ProgressBarModule} from "angular-progress-bar";
 import { ParsedPostComponent } from './shared/parsed-post/parsed-post.component';
 import { CopyToClipboardComponent } from './copy-to-clipboard/copy-to-clipboard.component';
+import { AdminComponent } from './admin/admin/admin.component';
+import { UserPostComponent } from './admin/user-post/user-post.component';
+import { CommentComponent } from './admin/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { CopyToClipboardComponent } from './copy-to-clipboard/copy-to-clipboard.
     UserProfileComponent,
     ParsedPostComponent,
     CopyToClipboardComponent,
+    AdminComponent,
+    UserPostComponent,
+    CommentComponent,
 
   ],
   imports: [

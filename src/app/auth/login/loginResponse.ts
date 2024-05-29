@@ -2,5 +2,6 @@ export interface LoginResponsePayload{
     authToken: string,
     refreshToken: string,
     expiresAt: Date,
-    username: string
+    username: string,
+    admin: boolean
   }

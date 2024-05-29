@@ -30,6 +30,7 @@ export class AuthService {
       this.localStorageService.set("username", data.username);
       this.localStorageService.set("refreshToken", data.refreshToken);
       this.localStorageService.set("expiresAt", data.expiresAt)
+      this.localStorageService.set("isAdmin", data.admin)
 
       this.loggedIn.emit(true)
       this.username.emit(data.username)
@@ -65,7 +66,9 @@ export class AuthService {
   getRefreshToken() {
     return this.localStorageService.get('refreshToken');
   }
-
+  getAdmin(): string {
+    return <string>this.localStorageService.get('isAdmin');
+  }
   getExpirationTime() {
     return this.localStorageService.get('expiresAt');
   }

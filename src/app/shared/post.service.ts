@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ParsedPostModel, PostModel} from "./post-model";
-import {CreatePostPayload} from "./create-post-payload";
+import {PostRequestPayload} from "./post-request-payload";
 // @ts-ignore
 import parseUrl from "parse-url"
 import {catchError} from "rxjs/operators";
@@ -26,7 +26,7 @@ export class PostService {
     return this.httpClient.get<Array<PostModel>>("http://localhost:8080/api/post")
   }
 
-  createPost(createPostPayload: CreatePostPayload): Observable<PostModel>{
+  createPost(createPostPayload: PostRequestPayload): Observable<PostModel>{
     return this.httpClient.post<PostModel>("http://localhost:8080/api/post", createPostPayload)
   }
 
@@ -42,6 +42,13 @@ export class PostService {
     return this.httpClient.get<Array<ParsedPostModel>>("http://localhost:8080/api/parsed-post")
   }
 
+  updatePost(postId: number, postBody: PostRequestPayload): Observable<PostModel>{
+    return this.httpClient.put<PostModel>("http://localhost:8080/api/post/" + postId, postBody)
+  }
+
+  deletePostById(postId: number): Observable<PostModel>{
+    return this.httpClient.delete<PostModel>("http://localhost:8080/api/post/" + postId)
+  }
   monoBankJarLinkIsValid(monoBankJarLink: string): boolean {
 
     const monoBankApiUrl = "https://send.monobank.ua/api/handler"

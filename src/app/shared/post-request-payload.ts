@@ -1,4 +1,4 @@
-export interface CreatePostPayload {
+export interface PostRequestPayload {
   postName: string,
   description: string,
   cardNumber: string,

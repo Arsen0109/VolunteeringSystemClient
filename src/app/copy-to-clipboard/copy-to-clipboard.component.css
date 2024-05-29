@@ -1,7 +1,6 @@
 .copy-container {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 input[type="text"] {
@@ -9,6 +8,10 @@ input[type="text"] {
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 
 button {
@@ -22,9 +25,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
+
 
 .success-message {
   margin-top: 10px;
