@@ -69,10 +69,10 @@
   margin-top: 5px;
 }
 
-.post-card .blog-description {
+.post-card .post-description {
   font-size: 1rem;
   color: #555;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .post-card .read-more-btn {

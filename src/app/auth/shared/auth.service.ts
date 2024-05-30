@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import { SignupRequestPayload } from '../../DTO/signupRequest';
 import {Observable, map, tap} from 'rxjs';
 import { LoginRequestPayload } from '../../DTO/loginRequest';
@@ -19,8 +19,8 @@ export class AuthService {
   }
   constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) { }
 
-  signup(signupRequestPayload: SignupRequestPayload): Observable<any>{
-    return this.httpClient.post("http://localhost:8080/api/auth/signup", signupRequestPayload, {responseType: 'text'})
+  signup(signupRequestPayload: SignupRequestPayload): Observable<HttpResponse<any>>{
+    return this.httpClient.post<HttpResponse<any>>("http://localhost:8080/api/auth/signup", signupRequestPayload, {observe: "response"})
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean>{

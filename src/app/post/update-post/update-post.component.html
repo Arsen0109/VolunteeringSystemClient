@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <hr />
+    <div class="create-post-container col-md-9">
+      <div>
+        <form class="post-form" [formGroup]="postForm">
+          <div class="form-group">
+            <div class="create-post-heading">Update Post</div>
+            <hr />
+            <input type="text" [formControlName]="'postName'" [(ngModel)]="post.postName" class="form-control" style="margin-top: 5px"
+                   placeholder="Title">
+
+            <input type="text" [formControlName]="'cardNumber'" [(ngModel)]="post.cardNumber" class="form-control" style="margin-top: 5px"
+                   placeholder="Card Number">
+            <span
+              *ngIf="!this.cardNumberIsValid"
+              class="help-block" style="color: red"
+            >Please enter a valid card number with length 16 containing only numbers.</span
+            >
+            <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" [(ngModel)]="post.monoBankJarLink" style="margin-top: 5px" placeholder="Monobank Jar Link">
+            <span
+              *ngIf="!this.monoBankJarLinkIsValid"
+              class="help-block" style="color: red"
+            >Please enter a valid monobank jar link</span
+            >
+            <input type="text" class="form-control" [formControlName]="'date'" [(ngModel)]="post.createdDate" style="margin-top: 5px" placeholder="Date of creation" readonly>
+
+            <editor [formControlName]="'description'" [(ngModel)]="post.description" [init]="{
+            base_url: '/tinymce',
+            suffix: '.min'}">
+            </editor>
+            <span>
+            <div style="margin-top: 5px" class="float-right">
+              <button (click)="updatePost()" [disabled]="postForm.invalid"
+                      class="btnUpdatePost">Update</button>
+<!--              <button (click)="deletePost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnDelete">Delete</button>-->
+
+            </div>
+          </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

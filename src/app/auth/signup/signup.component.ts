@@ -4,6 +4,7 @@ import { SignupRequestPayload } from '../../DTO/signupRequest';
 import { AuthService } from '../shared/auth.service';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-signup',
@@ -14,6 +15,7 @@ export class SignupComponent implements OnInit{
 
   signupForm!: FormGroup;
   signupRequestPayload!: SignupRequestPayload;
+  userAlreadyExists = false
 
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
     this.signupRequestPayload = {
@@ -36,9 +38,14 @@ export class SignupComponent implements OnInit{
     this.signupRequestPayload.username = this.signupForm.get("username")?.value;
     this.signupRequestPayload.password = this.signupForm.get("password")?.value;
 
-    this.authService.signup(this.signupRequestPayload).subscribe(() => {
-      this.router.navigate(['login'], {queryParams: {registered: 'true'}})
-    }, () => {
+    this.authService.signup(this.signupRequestPayload).subscribe(data => {
+
+        this.router.navigate(['login'], {queryParams: {registered: 'true'}})
+
+    }, (error) => {
+      if (error.status == 406){
+        this.userAlreadyExists = true
+      }
       this.toastr.error("Registration failed!")
     })
   }

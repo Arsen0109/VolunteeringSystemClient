@@ -51,6 +51,12 @@
                   class="help-block"
                   >Please enter a valid username</span
                 >
+                <span
+                  *ngIf="this.userAlreadyExists"
+                  class="help-block"
+                  style="color: red"
+                >User with this username already exists</span
+                >
               </div>
             </div>
 
