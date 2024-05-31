@@ -31,6 +31,8 @@ import { AdminCommentComponent } from './admin/admin-comment/admin-comment.compo
 import {AdminParsedPostComponent} from "./admin/admin-parsed-post/admin-parsed-post.component";
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { UpdatePostComponent } from './post/update-post/update-post.component';
+import { FaqComponent } from './faq/faq.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { UpdatePostComponent } from './post/update-post/update-post.component';
     AdminCommentComponent,
     AdminSidebarComponent,
     UpdatePostComponent,
+    FaqComponent,
+    AboutUsComponent,
 
   ],
   imports: [

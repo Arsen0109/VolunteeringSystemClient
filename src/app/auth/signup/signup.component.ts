@@ -46,6 +46,8 @@ export class SignupComponent implements OnInit{
       if (error.status == 406){
         this.userAlreadyExists = true
       }
+      console.log(error)
+      console.error()
       this.toastr.error("Registration failed!")
     })
   }

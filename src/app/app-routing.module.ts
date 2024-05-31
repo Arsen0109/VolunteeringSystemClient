@@ -13,6 +13,8 @@ import {AdminComponent} from "./admin/admin/admin.component";
 import {UserPostComponent} from "./admin/user-post/user-post.component";
 import {AdminCommentComponent} from "./admin/admin-comment/admin-comment.component";
 import {UpdatePostComponent} from "./post/update-post/update-post.component";
+import {FaqComponent} from "./faq/faq.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: "sign-up", component: SignupComponent},
   {path: "login", component: LoginComponent},
   {path: "parsed-post", component: ParsedPostComponent},
+  {path: "faq", component: FaqComponent},
+  {path: "about-us", component: AboutUsComponent},
   {path: "create-post", component: CreatePostComponent, canActivate: [authGuard]},
   {path: "update-post/:id", component: UpdatePostComponent, canActivate: [authGuard]},
   {path: "admin", component: AdminComponent},

@@ -50,6 +50,7 @@ export class CreatePostComponent implements OnInit {
     this.cardNumberIsValid = this.validateCardNumber(this.createPostPayload.cardNumber)
     if (this.monoBankJarLinkIsValid && this.cardNumberIsValid) {
       try {
+        console.log(this.createPostPayload)
         this.postService.createPost(this.createPostPayload).subscribe(data => {
           this.router.navigateByUrl("/")
         })
