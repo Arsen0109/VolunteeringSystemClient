@@ -19,10 +19,10 @@
       </a>
     </div>
     <ul class="nav nav-pills">
-      <li class="nav-item"><a routerLink="/" class="nav-link" [routerLinkActive]="'nav-item-active'" [routerLinkActiveOptions]="{exact : true}">Home</a></li>
-      <li class="nav-item"><a routerLink="/parsed-post" class="nav-link" [routerLinkActive]="'nav-item-active'">Famous Donations</a></li>
-      <li class="nav-item"><a routerLink="/sign-up" class="nav-link" [routerLinkActive]="'nav-item-active'">FAQs</a></li>
-      <li class="nav-item"><a routerLink="#" class="nav-link" [routerLinkActive]="'nav-item-active'">About</a></li>
+      <li class="nav-item"><a routerLink="/" class="nav-link" [routerLinkActive]="'nav-item-active'" [routerLinkActiveOptions]="{exact : true}">Наші збори</a></li>
+      <li class="nav-item"><a routerLink="/parsed-post" class="nav-link" [routerLinkActive]="'nav-item-active'">Інші збори</a></li>
+      <li class="nav-item"><a routerLink="/faq" class="nav-link" [routerLinkActive]="'nav-item-active'">FAQs</a></li>
+      <li class="nav-item"><a routerLink="/about-us" class="nav-link" [routerLinkActive]="'nav-item-active'">Про нас</a></li>
     </ul>
     <div class="flex-grow-1 float-right">
       <div *ngIf="isLoggedIn" class="dropdown">
@@ -34,15 +34,15 @@
           {{username}}
         </button>
         <div class="dropdown-content">
-          <button class="dropdown-item" (click)="goToUserProfile()" >Profile</button>
-          <button class="dropdown-item" (click)="logout()" >Logout</button>
+          <button class="dropdown-item" (click)="goToUserProfile()" >Профіль</button>
+          <button class="dropdown-item" (click)="logout()" >Вийти</button>
         </div>
       </div>
 
 
       <div *ngIf="!isLoggedIn">
-        <a routerLink="/sign-up" class="float-end sign-up mr-2">Sign up</a>
-        <a routerLink="/login" class="float-end login mr-2">Login</a>
+        <a routerLink="/sign-up" class="float-end sign-up mr-2">Зареєструватися</a>
+        <a routerLink="/login" class="float-end login mr-2">Увійти</a>
       </div>
     </div>
   </nav>

@@ -5,36 +5,36 @@
       <div>
         <form class="post-form" [formGroup]="updateCommentForm">
           <div class="form-group">
-            <div class="comment-heading">Admin operations over user comments</div>
+            <div class="comment-heading">Операції адміністратора над коментарями</div>
             <hr />
             <input type="text" [formControlName]="'commentId'" class="form-control" style="margin-top: 5px"
-                   placeholder="Comment ID">
+                   placeholder="ID коментаря">
             <input type="text" [formControlName]="'text'" class="form-control" style="margin-top: 5px"
-                   placeholder="Comment Text">
+                   placeholder="CТекст коментаря">
 
             <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
-                   placeholder="Post ID" readonly>
+                   placeholder="ID поста" readonly>
             <input type="text" [formControlName]="'username'" class="form-control" style="margin-top: 5px"
-                   placeholder="User Name" readonly>
+                   placeholder="Ім'я коментатора" readonly>
             <input type="text" [formControlName]="'createdDate'" class="form-control" style="margin-top: 5px"
-                   placeholder="Date of creation" readonly>
+                   placeholder="Дата створення" readonly>
             <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="getComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnUpdateComments">Get Comment</button>
+              <button (click)="getComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnUpdateComments">Отримати коментар</button>
 
               <button (click)="updateComment()" [disabled]="updateCommentForm.invalid"
-                      class="btnUpdateComments">Update</button>
-              <button (click)="deleteComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnDelete">Delete</button>
+                      class="btnUpdateComments">Редагувати</button>
+              <button (click)="deleteComment()" [disabled]="updateCommentForm.get('commentId')?.invalid" class="btnDelete">Видалити</button>
             </div>
           </span>
             <span
               *ngIf="this.commentIsDeleted"
               class="help-block" style="color: green"
-            >Post deleted successfully</span>
+            >Коментар успішно видалено</span>
             <span
               *ngIf="this.commentIsUpdated"
               class="help-block" style="color: green"
-            >Post updated successfully</span>
+            >Коментар успішно оновлено</span>
           </div>
         </form>
       </div>
@@ -46,5 +46,5 @@
 </div>
 <ng-template #otherContent>
   <br>
-  Sorry you are not admin
+  Вибачте та ця сторінка лише для адміністратора
 </ng-template>

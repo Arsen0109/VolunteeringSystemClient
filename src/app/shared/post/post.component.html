@@ -5,8 +5,8 @@
   <div class="post-card">
     <div class="blog-content">
       <h2 class="blog-title">{{post.postName}}</h2>
-      <p class="blog-author">Created by <a href="#">{{post.username}}</a></p>
-      <p class="blog-author">Created at: {{datePipe.transform(post.createdDate, "dd/MM/yyyy")}}</p>
+      <p class="blog-author">Створено користувачем <a href="#">{{post.username}}</a></p>
+      <p class="blog-author">Дата публікування: {{datePipe.transform(post.createdDate, "dd/MM/yyyy")}}</p>
       <app-copy-to-clipboard [textToCopy]="post.cardNumber"></app-copy-to-clipboard>
       <div *ngIf="post.monoBankJarLink !== null">
         <!--        <div class="progress">-->
@@ -17,7 +17,7 @@
           monobank</a>
       </div>
       <p class="post-description" [innerHtml]="post.description">{{post.description}}</p>
-      <a routerLink="{{this.getPostUrl(post.postId)}}" class="read-more-btn">Read More</a>
+      <a routerLink="{{this.getPostUrl(post.postId)}}" class="read-more-btn">Більше</a>
     </div>
   </div>
 </div>

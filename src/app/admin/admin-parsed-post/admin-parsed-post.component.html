@@ -4,18 +4,18 @@
     <div class="create-post-container col-md-9">
       <form class="post-form" [formGroup]="updateParsedPostForm">
         <div class="form-group">
-          <div class="create-post-heading">Create Post</div>
+          <div class="create-post-heading">Сторінка адміністратора для операцій з взятими зборами</div>
           <hr />
           <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
-                 placeholder="Post ID">
+                 placeholder="ID збору">
           <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
-                 placeholder="Title">
+                 placeholder="Назва">
 
           <input type="text" [formControlName]="'url'" class="form-control" style="margin-top: 5px"
-                 placeholder="Post URL">
+                 placeholder="URL збору">
 
-          <input type="text" class="form-control" [formControlName]="'platformName'" style="margin-top: 5px" placeholder="Platform Name">
-          <input type="text" class="form-control" [formControlName]="'iconUrl'" style="margin-top: 5px" placeholder="Icon URL">
+          <input type="text" class="form-control" [formControlName]="'platformName'" style="margin-top: 5px" placeholder="Платформа">
+          <input type="text" class="form-control" [formControlName]="'iconUrl'" style="margin-top: 5px" placeholder="URL іконки">
 
           <editor [formControlName]="'description'" [init]="{
             base_url: '/tinymce',
@@ -23,21 +23,21 @@
           </editor>
           <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="getPost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
+              <button (click)="getPost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnUpdatePost">Отримати збір</button>
 
               <button (click)="updatePost()" [disabled]="updateParsedPostForm.invalid"
-                      class="btnUpdatePost">Update</button>
-              <button (click)="deletePost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnDelete">Delete</button>
+                      class="btnUpdatePost">Оновити</button>
+              <button (click)="deletePost()" [disabled]="updateParsedPostForm.get('postId')?.invalid" class="btnDelete">Видалити</button>
             </div>
           </span>
           <span
             *ngIf="this.postIsDeleted"
             class="help-block" style="color: green"
-          >Post deleted successfully</span>
+          >Збір успішно видалено</span>
           <span
             *ngIf="this.postIsUpdated"
             class="help-block" style="color: green"
-          >Post updated successfully</span>
+          >Збір успішно оновлено</span>
         </div>
       </form>
     </div>

@@ -16,7 +16,7 @@ import {TokenInterceptor} from "./token-interceptor";
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './shared/post/post.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {DatePipe} from "@angular/common";
+import {DatePipe, NgOptimizedImage} from "@angular/common";
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
@@ -72,7 +72,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
-    EditorModule
+    EditorModule,
+    NgOptimizedImage
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

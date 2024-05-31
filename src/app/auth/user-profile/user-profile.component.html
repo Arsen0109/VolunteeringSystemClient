@@ -1,17 +1,17 @@
 <div class="container">
   <div>
-    Welcome <b>{{username}}</b>.<br /> You have posted <b>{{postLength}}</b> time(s) and commented
-    <b>{{commentLength}}</b> time(s).
-    You can check your post and comment history below.
+    Welcome <b>{{username}}</b>.<br /> Ви опублікували <b>{{postLength}}</b> раз(и) та коментували збори
+    <b>{{commentLength}}</b> раз(и).
+    Ви можете переглянути свою історію коментарів та зборів внизу.
   </div>
   <hr />
   <div>
-    Your Posts:
+    Ваші пости:
   </div>
   <app-post [data]="posts"></app-post>
   <hr />
   <div>
-    Your Comments:
+    Ваші коментарі:
   </div>
   <div class="comment-container">
     <ul class="comment-list" *ngFor="let comment of comments">

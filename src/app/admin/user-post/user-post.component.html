@@ -5,30 +5,30 @@
       <div>
         <form class="post-form" [formGroup]="updatePostForm">
         <div class="form-group">
-          <div class="create-post-heading">Admin operations over users posts</div>
+          <div class="create-post-heading">Операції адміністратора над користувацькими зборами</div>
           <hr />
           <input type="text" [formControlName]="'postId'" class="form-control" style="margin-top: 5px"
-                 placeholder="Post ID">
+                 placeholder="ID збору">
           <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
-                 placeholder="Title">
+                 placeholder="Назва">
 
           <input type="text" [formControlName]="'cardNumber'" class="form-control" style="margin-top: 5px"
-                 placeholder="Card Number">
+                 placeholder="Номер банківської картки">
           <span
             *ngIf="!this.cardNumberIsValid"
             class="help-block" style="color: red"
           >Please enter a valid card number with length 16 containing only numbers.</span
           >
 
-          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Monobank Jar Link">
+          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Посилання на банку monobank (не обов'язково)">
           <span
             *ngIf="!this.monoBankJarLinkIsValid"
             class="help-block" style="color: red"
           >Please enter a valid monobank jar link</span
           >
-          <input type="text" class="form-control" [formControlName]="'username'" style="margin-top: 5px" placeholder="User Name" readonly>
-          <input type="text" class="form-control" [formControlName]="'isOpened'" style="margin-top: 5px" placeholder="Is Opened" readonly>
-          <input type="text" class="form-control" [formControlName]="'date'" style="margin-top: 5px" placeholder="Date of creation" readonly>
+          <input type="text" class="form-control" [formControlName]="'username'" style="margin-top: 5px" placeholder="Ім'я користувача" readonly>
+          <input type="text" class="form-control" [formControlName]="'isOpened'" style="margin-top: 5px" placeholder="Відкритий/Закритий" readonly>
+          <input type="text" class="form-control" [formControlName]="'date'" style="margin-top: 5px" placeholder="Дата створення" readonly>
 
           <editor [formControlName]="'description'" [init]="{
             base_url: '/tinymce',
@@ -36,22 +36,22 @@
           </editor>
           <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="getPost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnUpdatePost">Get Post</button>
+              <button (click)="getPost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnUpdatePost">Отримати збір</button>
 
               <button (click)="updatePost()" [disabled]="updatePostForm.invalid"
-                      class="btnUpdatePost">Update</button>
-              <button (click)="deletePost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnDelete">Delete</button>
+                      class="btnUpdatePost">Оновити</button>
+              <button (click)="deletePost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnDelete">Видалити</button>
 
             </div>
           </span>
           <span
             *ngIf="this.postIsDeleted"
             class="help-block" style="color: green"
-          >Post deleted successfully</span>
+          >Збір успішно видалено</span>
           <span
             *ngIf="this.postIsUpdated"
             class="help-block" style="color: green"
-          >Post updated successfully</span>
+          >Збір успішно оновлено.</span>
         </div>
       </form>
     </div>
@@ -63,5 +63,5 @@
 </div>
 <ng-template #otherContent>
   <br>
-  Sorry you are not admin
+  Вибачте та ця сторінка лише для адміністратора
 </ng-template>

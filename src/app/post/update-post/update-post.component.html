@@ -5,25 +5,25 @@
       <div>
         <form class="post-form" [formGroup]="postForm">
           <div class="form-group">
-            <div class="create-post-heading">Update Post</div>
+            <div class="create-post-heading">Оновити дані збору</div>
             <hr />
             <input type="text" [formControlName]="'postName'" [(ngModel)]="post.postName" class="form-control" style="margin-top: 5px"
-                   placeholder="Title">
+                   placeholder="Назва збору">
 
             <input type="text" [formControlName]="'cardNumber'" [(ngModel)]="post.cardNumber" class="form-control" style="margin-top: 5px"
-                   placeholder="Card Number">
+                   placeholder="Номер банківської картки">
             <span
               *ngIf="!this.cardNumberIsValid"
               class="help-block" style="color: red"
-            >Please enter a valid card number with length 16 containing only numbers.</span
+            >Будь ласка введіть валідний номер картки! Він повинен містити 16 цифр без жодних символів.</span
             >
-            <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" [(ngModel)]="post.monoBankJarLink" style="margin-top: 5px" placeholder="Monobank Jar Link">
+            <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" [(ngModel)]="post.monoBankJarLink" style="margin-top: 5px" placeholder="Посилання на банку monobank (не обов'язкове поле)">
             <span
               *ngIf="!this.monoBankJarLinkIsValid"
               class="help-block" style="color: red"
-            >Please enter a valid monobank jar link</span
+            >Будь ласка введіть вірне посилання на банку відповідно шаблону https://send.monobank.ua/jar/'jarId'</span
             >
-            <input type="text" class="form-control" [formControlName]="'date'" [(ngModel)]="post.createdDate" style="margin-top: 5px" placeholder="Date of creation" readonly>
+            <input type="text" class="form-control" [formControlName]="'date'" [(ngModel)]="this.formattedDate" style="margin-top: 5px" placeholder="Дата створення" readonly>
 
             <editor [formControlName]="'description'" [(ngModel)]="post.description" [init]="{
             base_url: '/tinymce',
@@ -32,7 +32,7 @@
             <span>
             <div style="margin-top: 5px" class="float-right">
               <button (click)="updatePost()" [disabled]="postForm.invalid"
-                      class="btnUpdatePost">Update</button>
+                      class="btnUpdatePost">Оновити збір</button>
 <!--              <button (click)="deletePost()" [disabled]="updatePostForm.get('postId')?.invalid" class="btnDelete">Delete</button>-->
 
             </div>

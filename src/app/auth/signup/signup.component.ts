@@ -4,7 +4,6 @@ import { SignupRequestPayload } from '../../DTO/signupRequest';
 import { AuthService } from '../shared/auth.service';
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-signup',

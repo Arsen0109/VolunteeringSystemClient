@@ -4,13 +4,13 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header" style="text-align: center">
-          <h4>Register</h4>
+          <h4>Увійти</h4>
         </div>
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group row">
               <label class="col-md-4 col-form-label text-md-right"
-                >User Name</label
+                >Ім'я користувача</label
               >
               <div class="col-md-6">
                 <input
@@ -24,7 +24,7 @@
                     loginForm.get('username')?.touched
                   "
                   class="help-block"
-                  >Please enter a valid username</span
+                  >Будь ласка введіть правильне ім'я користувача</span
                 >
               </div>
             </div>
@@ -33,7 +33,7 @@
               <label
                 for="password"
                 class="col-md-4 col-form-label text-md-right"
-                >Password</label
+                >Пароль</label
               >
               <div class="col-md-6">
                 <input
@@ -49,7 +49,7 @@
                     loginForm.get('password')?.touched
                   "
                   class="help-block"
-                  >Please enter a valid password</span
+                  >Будь ласка введіть правильний пароль</span
                 >
               </div>
             </div>
@@ -57,11 +57,11 @@
             <span class="col-md-6 offset-md-4">
               <button type="submit" class="sign-up" [disabled]="loginForm.invalid">Log In</button>
               <span style="padding-left: 15px"
-                >Create account? <a routerLink="/sign-up">Sign Up</a></span
+                >Ще не зареєстровані? <a routerLink="/sign-up">Зареєструватися</a></span
               >
             </span>
             <div class="login-failed" *ngIf='this.isError'>
-              <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
+              <p class="login-failed-text">Вхід не виконано. Будь ласка перевірте свої дані та спробуйте знову.</p>
             </div>
             <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.registerSuccessMessage.length > 0">
               <p class="register-success-text">{{registerSuccessMessage}}</p>

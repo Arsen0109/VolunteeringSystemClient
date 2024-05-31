@@ -4,24 +4,24 @@
     <div class="create-post-container col-md-9">
       <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
         <div class="form-group">
-          <div class="create-post-heading">Create Post</div>
+          <div class="create-post-heading">Створити збір</div>
           <hr />
           <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
-                 placeholder="Title">
+                 placeholder="Назва збору">
 
           <input type="text" [formControlName]="'cardNumber'" class="form-control" style="margin-top: 5px"
-                 placeholder="Card Number">
+                 placeholder="Номер банківської картки">
           <span
             *ngIf="!this.cardNumberIsValid"
             class="help-block" style="color: red"
-          >Please enter a valid card number with length 16 containing only numbers.</span
+          >Будь ласка введіть валідний номер картки! Він повинен містити 16 цифр без жодних символів.</span
           >
 
-          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Monobank Jar Link">
+          <input type="text" class="form-control" [formControlName]="'monoBankJarLink'" style="margin-top: 5px" placeholder="Посилання на банку monobank (не обов'язкове поле)">
           <span
             *ngIf="!this.monoBankJarLinkIsValid"
             class="help-block" style="color: red"
-          >Please enter a valid monobank jar link</span
+          >Будь ласка введіть вірне посилання на банку відповідно шаблону https://send.monobank.ua/jar/'jarId'</span
           >
 
           <editor [formControlName]="'description'" [init]="{
@@ -30,9 +30,9 @@
           </editor>
           <span>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="discardPost()" class="btnDiscard">Discard</button>
+              <button (click)="discardPost()" class="btnDiscard">Відхилити</button>
               <button (click)="createPost()" [disabled]="createPostForm.invalid"
-                      class="btnCreatePost">Post</button>
+                      class="btnCreatePost">Опублікувати</button>
             </div>
           </span>
         </div>

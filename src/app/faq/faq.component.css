@@ -1,0 +1,25 @@
+.title {
+  font-weight: 500;
+  font-size: 36px;
+  text-align: center;
+}
+
+.guides {
+  margin: auto;
+  width: 95%;
+}
+
+.guide {
+  margin-top: 40px;
+}
+img {
+  margin: 10px;
+  width: 90%;
+}
+h4 {
+  font-size: 40px;
+}
+p {
+  font-size: 20px;
+  font-style: italic;
+}

@@ -5,6 +5,8 @@ import {PostService} from "../../shared/post.service";
 import {PostRequestPayload} from "../../DTO/post-request-payload";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
+import {computeStartOfLinePositions} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/source_file";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-update-post',
@@ -18,6 +20,7 @@ export class UpdatePostComponent implements OnInit {
   updatePostPayload!: PostRequestPayload
   cardNumberIsValid = true
   monoBankJarLinkIsValid = true
+  formattedDate?: string | null
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -35,10 +38,12 @@ export class UpdatePostComponent implements OnInit {
     // this.postForm.get('description')?.setValue(this.post.description)
     // this.postForm.get('date')?.setValue(this.post.createdDate)
   }
-   constructor(private postService: PostService, private toastr: ToastrService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor(private postService: PostService, private toastr: ToastrService, private router: Router, private activatedRoute: ActivatedRoute,
+               datePipe: DatePipe) {
      this.postId = this.activatedRoute.snapshot.params['id']
      this.postService.getPostById(this.postId).subscribe(data => {
        this.post = data;
+       this.formattedDate = "Дата створення: " + datePipe.transform(data.createdDate, "dd.MM.yyyy", "uk-UA")
      });
      this.updatePostPayload = {
        postName: '',
